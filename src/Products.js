@@ -1,11 +1,11 @@
 import React from 'react';
 import Filters from './Filters.js';
-import ProductForm from './ProductForm';
 import ProductTable from './ProductTable.js';
+import ProductForm from './ProductForm';
 
 var PRODUCTS = {
   '1': {id: 1, category: 'Musical Instruments', price: '$459.99', stocked: true, name: 'Clarinet'},
-  '2': {id: 2, category: 'Musical Instruments', price: '$5,000', stocked: true, name: 'Cello'},
+  '2': {id: 2, category: 'Musical Instruments', price: '$5,000', stocked: true, name: 'Harpsicord'},
   '3': {id: 3, category: 'Musical Instruments', price: '$11,000', stocked: false, name: 'Fortepiano'},
   '4': {id: 4, category: 'Furniture', price: '$799', stocked: true, name: 'Chaise Lounge'},
   '5': {id: 5, category: 'Furniture', price: '$1,300', stocked: false, name: 'Dining Table'},
@@ -13,11 +13,27 @@ var PRODUCTS = {
 };
 
 class Products extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filterText: '',
+      inStockOnly: false,
+      products: PRODUCTS
+    };
+
+  }
   render() {
     return (
       <div>
-        <Filters ></Filters>
-        <ProductTable products={PRODUCTS} ></ProductTable>
+        <Filters
+          filterText={this.state.filterText}
+          inStockOnly={this.state.inStockOnly}
+        ></Filters>
+        <ProductTable
+          products={this.state.products}
+          filterText={this.state.filterText}
+          inStockOnly={this.state.inStockOnly}
+        ></ProductTable>
         <ProductForm ></ProductForm>
       </div>
     );

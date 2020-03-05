@@ -7,7 +7,7 @@ class App extends React.Component {
       <div>
         <header className="App-header"><h1>My React App</h1></header>
         <section>
-          <Products ></Products>
+          <Products />
         </section>
       </div>
     );
